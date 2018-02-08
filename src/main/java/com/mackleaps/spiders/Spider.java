@@ -29,7 +29,7 @@ public class Spider {
             } else {
                 currentUrl = this.nextUrl();
             }
-            System.out.println("BATATA 1");
+
             leg.crawl(currentUrl); // Lots of stuff happening here. Look at the crawl method in
             // SpiderLeg
             boolean success = leg.searchForWord(searchWord);

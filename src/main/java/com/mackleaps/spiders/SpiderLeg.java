@@ -6,8 +6,6 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import java.io.IOException;
-
 import java.net.InetSocketAddress;
 import java.net.Proxy;
 import java.util.LinkedList;
@@ -20,7 +18,7 @@ public class SpiderLeg {
     // We'll use a fake USER_AGENT so the web server thinks the robot is a normal web browser.
     private static final String USER_AGENT
             = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.112 Safari/535.1";
-    private List<String> links = new LinkedList<String>();
+    private List<String> substancias = new LinkedList<String>();
     private Document htmlDocument;
 
     /**
@@ -33,7 +31,6 @@ public class SpiderLeg {
      */
     public boolean crawl(String url) {
 
-        System.out.println("BATATA 2");
         Connection connection = null;
         Document htmlDocument = null;
 
@@ -52,13 +49,11 @@ public class SpiderLeg {
         try {
             htmlDocument = connection.get();
         } catch (Exception ex) {
-            System.out.println("lol3");
             ex.printStackTrace();
             return false;
         }
 
         this.htmlDocument = htmlDocument;
-        System.out.println(this.htmlDocument);
         if (connection.response().statusCode() == 200) // 200 is the HTTP OK status code
         // indicating that everything is great.
         {
@@ -68,11 +63,10 @@ public class SpiderLeg {
             System.out.println("**Failure** Retrieved something other than HTML");
             return false;
         }
-        Elements linksOnPage = htmlDocument.select("a[href]");
-        System.out.println("Found (" + linksOnPage.size() + ") links");
-        for (Element link : linksOnPage) {
-            this.links.add(link.absUrl("href"));
-        }
+        Elements tdsOnPage = htmlDocument.select("td");
+        System.out.println(tdsOnPage.get(6));
+        System.out.println("Found (" + tdsOnPage.size() + ") td's");
+        System.out.println(tdsOnPage.get(6).getElementsByTag("p"));
         return true;
 
     }
@@ -95,8 +89,8 @@ public class SpiderLeg {
         return bodyText.toLowerCase().contains(searchWord.toLowerCase());
     }
 
-    public List<String> getLinks() {
-        return this.links;
+    public List<String> getSubstancias() {
+        return this.substancias;
     }
 
 }

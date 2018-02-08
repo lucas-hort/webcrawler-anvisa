@@ -14,6 +14,15 @@ public class SpiderTest {
      */
     public static void main(String[] args) {
         Spider spider = new Spider();
-        spider.search("http://arstechnica.com/", "computer");
+        spider.search("http://portal.anvisa.gov.br/lista-de-substancias-sujeitas-a-controle-especial",
+                        "MDMA");
     }
 }
+
+/*
+* 1 - EXTRAIR OS DADOS DO SITE
+* 2 - PROCURAR POR TABLE, TBODY, TD
+* 3 - SEPARAR OS TDS
+* 4 -
+*
+* */
