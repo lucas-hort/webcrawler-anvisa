@@ -1,5 +1,6 @@
 package com.mackleaps.spiders;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -64,9 +65,44 @@ public class SpiderLeg {
             return false;
         }
         Elements tdsOnPage = htmlDocument.select("td");
-        System.out.println(tdsOnPage.get(6));
-        System.out.println("Found (" + tdsOnPage.size() + ") td's");
-        System.out.println(tdsOnPage.get(6).getElementsByTag("p"));
+
+        for (int i = 6; i < tdsOnPage.size(); i = i + 3){
+
+            Element td = tdsOnPage.get(i);
+
+            System.out.println("TD INTEIRO: ");
+            System.out.println(td);
+
+            System.out.println("AÇÃO: ");
+            System.out.println(td.select("strong").text());
+
+            System.out.println("SUBSTANCIA:");
+            String []elementosDaTagP = null;
+            int numerosDeP = td.select("p").size();
+
+            for (int j = 1; j < numerosDeP; j++){
+                elementosDaTagP = td.select("p").get(j).text().split(" ");
+                if (elementosDaTagP[0].equals("Lista")){
+                    System.out.println(elementosDaTagP[elementosDaTagP.length-1]);
+                }
+            }
+
+            System.out.println("");
+            System.out.println(" === ");
+            System.out.println("");
+        }
+
+
+
+        //System.out.println(tdsOnPage.get(6).select("p"));
+
+//        for (int i = 6 ; i < tdsOnPage.size(); i = i + 3){
+//            System.out.println(tdsOnPage.get(i).select("strong").first().text());
+//        }
+
+        System.out.println("");
+        System.out.println("");
+
         return true;
 
     }
