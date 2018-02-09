@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1dc5a87-0299-4a3f-a4e7-ea0e72919831" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/Spider.java" afterPath="$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/Spider.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/SpiderLeg.java" afterPath="$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/SpiderLeg.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -38,8 +39,8 @@
       <file leaf-file-name="Spider.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/Spider.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="490">
-              <caret line="39" column="57" lean-forward="false" selection-start-line="39" selection-start-column="57" selection-end-line="39" selection-end-column="57" />
+            <state relative-caret-position="108">
+              <caret line="39" column="56" lean-forward="false" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="56" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -50,15 +51,15 @@
       <file leaf-file-name="SpiderLeg.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/SpiderLeg.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
-              <caret line="92" column="32" lean-forward="true" selection-start-line="92" selection-start-column="32" selection-end-line="92" selection-end-column="32" />
+            <state relative-caret-position="-578">
+              <caret line="95" column="13" lean-forward="false" selection-start-line="95" selection-start-column="13" selection-end-line="95" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#692#700#0" expanded="true" />
-                <element signature="e#4238#4239#0" expanded="true" />
-                <element signature="e#4277#4278#0" expanded="true" />
-                <element signature="e#4360#4361#0" expanded="true" />
-                <element signature="e#4411#4412#0" expanded="true" />
+                <element signature="e#691#699#0" expanded="true" />
+                <element signature="e#3947#3948#0" expanded="true" />
+                <element signature="e#3985#3986#0" expanded="true" />
+                <element signature="e#4027#4028#0" expanded="true" />
+                <element signature="e#4078#4079#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -86,8 +87,8 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/java/Spider.java" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/Spider.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/SpiderTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/Spider.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/SpiderLeg.java" />
       </list>
     </option>
@@ -312,12 +313,12 @@
       <option name="presentableId" value="Default" />
       <updated>1518099318146</updated>
       <workItem from="1518099321919" duration="9226000" />
-      <workItem from="1518191406541" duration="1838000" />
+      <workItem from="1518191406541" duration="4862000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="11064000" />
+    <option name="totallyTimeSpent" value="14088000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1600" y="-2" width="1600" height="902" extended-state="6" />
@@ -389,11 +390,11 @@
           <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#692#700#0" expanded="true" />
-            <element signature="e#4238#4239#0" expanded="true" />
-            <element signature="e#4277#4278#0" expanded="true" />
-            <element signature="e#4360#4361#0" expanded="true" />
-            <element signature="e#4411#4412#0" expanded="true" />
+            <element signature="e#691#699#0" expanded="true" />
+            <element signature="e#3947#3948#0" expanded="true" />
+            <element signature="e#3985#3986#0" expanded="true" />
+            <element signature="e#4027#4028#0" expanded="true" />
+            <element signature="e#4078#4079#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -455,16 +456,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/Spider.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="490">
-          <caret line="39" column="57" lean-forward="false" selection-start-line="39" selection-start-column="57" selection-end-line="39" selection-end-column="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/SpiderTest.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="414">
@@ -473,17 +464,27 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/SpiderLeg.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/Spider.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="92" column="32" lean-forward="true" selection-start-line="92" selection-start-column="32" selection-end-line="92" selection-end-column="32" />
+        <state relative-caret-position="108">
+          <caret line="39" column="56" lean-forward="false" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="56" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#692#700#0" expanded="true" />
-            <element signature="e#4238#4239#0" expanded="true" />
-            <element signature="e#4277#4278#0" expanded="true" />
-            <element signature="e#4360#4361#0" expanded="true" />
-            <element signature="e#4411#4412#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/SpiderLeg.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-578">
+          <caret line="95" column="13" lean-forward="false" selection-start-line="95" selection-start-column="13" selection-end-line="95" selection-end-column="13" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#691#699#0" expanded="true" />
+            <element signature="e#3947#3948#0" expanded="true" />
+            <element signature="e#3985#3986#0" expanded="true" />
+            <element signature="e#4027#4028#0" expanded="true" />
+            <element signature="e#4078#4079#0" expanded="true" />
           </folding>
         </state>
       </provider>

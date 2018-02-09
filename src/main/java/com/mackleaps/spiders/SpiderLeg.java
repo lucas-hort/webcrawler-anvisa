@@ -19,7 +19,7 @@ public class SpiderLeg {
     // We'll use a fake USER_AGENT so the web server thinks the robot is a normal web browser.
     private static final String USER_AGENT
             = "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/535.1 (KHTML, like Gecko) Chrome/13.0.782.112 Safari/535.1";
-    private List<String> substancias = new LinkedList<String>();
+    private List<String> substances = new LinkedList<String>();
     private Document htmlDocument;
 
     /**
@@ -66,11 +66,11 @@ public class SpiderLeg {
         }
 
 
-        //Extrai todos os tds da pagina
+        //Extract the TD tags in the table of substances
         Elements tdsOnPage = htmlDocument.select("td");
 
 
-        //Percorre todos os tds da table com as substancias
+        //Loop all tds we want
         for (int i = 6; i < tdsOnPage.size(); i = i + 3){
 
             Element td = tdsOnPage.get(i);
@@ -78,40 +78,29 @@ public class SpiderLeg {
 
             System.out.println("TD inteiro: " + td);
 
-            System.out.println("Ação da ANVISA: " + td.select("strong").text());
 
-
-            String []elementosDaTagP = null;
-            int numerosDeP = td.select("p").size();
-
+            Elements allParagraphs = td.select("p");
+            int numerosDeP = allParagraphs.size();
 
 
             System.out.println("== == TESTE == ==");
-            for(Element p : td.select("p")){
-                System.out.println(p);
+            for(Element p : allParagraphs){
+                //System.out.println(p);
 
                 if(isAction(p)){
-
+                    System.out.println("Ação da Anvisa: " + td.select("strong").first().text());
+                }else{
+                    extractSubstances(p);
                 }
+
             }
 
-
-
-            for (int j = 1; j < numerosDeP; j++){
-                elementosDaTagP = td.select("p").get(j).text().split(" ");
-                if (elementosDaTagP[0].equals("Lista")){
-                    System.out.println(elementosDaTagP[elementosDaTagP.length-1]);
-                }
-            }
 
             System.out.println("");
             System.out.println(" === ");
             System.out.println("");
         }
 
-
-        System.out.println("");
-        System.out.println("");
 
         return true;
 
@@ -136,14 +125,23 @@ public class SpiderLeg {
     }
 
 
-    public List<String> getSubstancias() {
-        return this.substancias;
+    public List<String> getSubstances() {
+        return this.substances;
     }
 
 
-    //Verifica se o paragrafo é uma ação
     public boolean isAction(Element e){
         return e.select("strong").hasText();
+    }
+
+
+    public void extractSubstances(Element p){
+        String []splitParagraph = null;
+
+        splitParagraph = p.text().split(" ");
+            if (splitParagraph[0].equals("Lista")){
+                System.out.println(splitParagraph[splitParagraph.length-1]);
+            }
     }
 
 }

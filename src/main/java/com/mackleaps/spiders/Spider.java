@@ -37,7 +37,7 @@ public class Spider {
                 System.out.println(String.format("**Success** Word %s found at %s", searchWord, currentUrl));
                 break;
             }
-            this.pagesToVisit.addAll(leg.getSubstancias());
+            this.pagesToVisit.addAll(leg.getSubstances());
         }
         System.out.println("\n**Done** Visited " + this.pagesVisited.size() + " web page(s)");
     }
