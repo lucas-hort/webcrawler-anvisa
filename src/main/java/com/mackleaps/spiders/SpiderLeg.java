@@ -139,8 +139,11 @@ public class SpiderLeg {
         String []splitParagraph = null;
 
         splitParagraph = p.text().split(" ");
+
             if (splitParagraph[0].equals("Lista")){
-                System.out.println(splitParagraph[splitParagraph.length-1]);
+                System.out.println("Ação na lista " + splitParagraph[1]);
+                for (int i = 2; i < splitParagraph.length ; i++ )
+                System.out.println(splitParagraph[i]);
             }
     }
 
