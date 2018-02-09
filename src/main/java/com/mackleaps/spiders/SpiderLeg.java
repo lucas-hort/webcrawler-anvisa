@@ -81,21 +81,17 @@ public class SpiderLeg {
             System.out.println("Ação da ANVISA: " + td.select("strong").text());
 
 
-
-
-
-
             String []elementosDaTagP = null;
             int numerosDeP = td.select("p").size();
 
 
-            System.out.println("== == TESTE == ==");
 
+            System.out.println("== == TESTE == ==");
             for(Element p : td.select("p")){
                 System.out.println(p);
 
-                if(p.select("strong").hasText()){
-                    System.out.println("hortgod1");
+                if(isAction(p)){
+
                 }
             }
 
@@ -139,12 +135,15 @@ public class SpiderLeg {
         return bodyText.toLowerCase().contains(searchWord.toLowerCase());
     }
 
+
     public List<String> getSubstancias() {
         return this.substancias;
     }
 
-    public boolean isAction(){
-        
+
+    //Verifica se o paragrafo é uma ação
+    public boolean isAction(Element e){
+        return e.select("strong").hasText();
     }
 
 }
