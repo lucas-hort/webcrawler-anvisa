@@ -137,14 +137,22 @@ public class SpiderLeg {
 
     public void extractSubstances(Element p){
         String []splitParagraph = null;
+        String []firstSplit = null;
+        String []secondSplit = null;
 
         splitParagraph = p.text().split(" ");
+        if(splitParagraph[0].equals("Lista")){
+            splitParagraph = p.text().split(":");
 
-            if (splitParagraph[0].equals("Lista")){
-                System.out.println("Ação na lista " + splitParagraph[1]);
-                for (int i = 2; i < splitParagraph.length ; i++ )
-                System.out.println(splitParagraph[i]);
+            firstSplit = splitParagraph[0].split(" "); //List the substances will be added
+            secondSplit = splitParagraph[1].split(";");//The substances
+
+            if (firstSplit[0].equals("Lista")){
+                System.out.println("Ação na lista " + firstSplit[1]);
+                for (int i = 0; i < secondSplit.length; i++ )
+                    System.out.println(secondSplit[i]);
             }
+        }
     }
 
 }
