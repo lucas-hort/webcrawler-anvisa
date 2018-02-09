@@ -20,9 +20,7 @@ public class SpiderTest {
 }
 
 /*
-* 1 - EXTRAIR OS DADOS DO SITE
-* 2 - PROCURAR POR TABLE, TBODY, TD
-* 3 - SEPARAR OS TDS
-* 4 -
+*
+*
 *
 * */

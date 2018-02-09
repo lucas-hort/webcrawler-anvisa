@@ -64,21 +64,42 @@ public class SpiderLeg {
             System.out.println("**Failure** Retrieved something other than HTML");
             return false;
         }
+
+
+        //Extrai todos os tds da pagina
         Elements tdsOnPage = htmlDocument.select("td");
 
+
+        //Percorre todos os tds da table com as substancias
         for (int i = 6; i < tdsOnPage.size(); i = i + 3){
 
             Element td = tdsOnPage.get(i);
 
-            System.out.println("TD INTEIRO: ");
-            System.out.println(td);
 
-            System.out.println("AÇÃO: ");
-            System.out.println(td.select("strong").text());
+            System.out.println("TD inteiro: " + td);
 
-            System.out.println("SUBSTANCIA:");
+            System.out.println("Ação da ANVISA: " + td.select("strong").text());
+
+
+
+
+
+
             String []elementosDaTagP = null;
             int numerosDeP = td.select("p").size();
+
+
+            System.out.println("== == TESTE == ==");
+
+            for(Element p : td.select("p")){
+                System.out.println(p);
+
+                if(p.select("strong").hasText()){
+                    System.out.println("hortgod1");
+                }
+            }
+
+
 
             for (int j = 1; j < numerosDeP; j++){
                 elementosDaTagP = td.select("p").get(j).text().split(" ");
@@ -92,13 +113,6 @@ public class SpiderLeg {
             System.out.println("");
         }
 
-
-
-        //System.out.println(tdsOnPage.get(6).select("p"));
-
-//        for (int i = 6 ; i < tdsOnPage.size(); i = i + 3){
-//            System.out.println(tdsOnPage.get(i).select("strong").first().text());
-//        }
 
         System.out.println("");
         System.out.println("");
@@ -127,6 +141,10 @@ public class SpiderLeg {
 
     public List<String> getSubstancias() {
         return this.substancias;
+    }
+
+    public boolean isAction(){
+        
     }
 
 }
