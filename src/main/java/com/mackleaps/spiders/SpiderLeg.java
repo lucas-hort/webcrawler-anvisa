@@ -131,6 +131,14 @@ public class SpiderLeg {
         return e.select("strong").hasText();
     }
 
+    /**
+     * This extract the name of the list and the substances
+     * of a paragraph.
+     * This only works if it starts with "Lista", "Adendo" is not included.
+     *
+     * @param p - the paragraph to be splitted
+     * @return the name of the list and all substances
+     */
 
     public List<String> extractSubstances(Element p){
         String []splitParagraph = null;
@@ -161,6 +169,11 @@ public class SpiderLeg {
         return substances;
     }
 
+    /**
+     * Include all substances in the HashMap
+     *
+     * @param substances - Substances to be added
+     */
     public void includeSubstances(List<String> substances){
         if(!substances.isEmpty()){
             String nameOfList = substances.remove(0);
@@ -177,6 +190,12 @@ public class SpiderLeg {
         }
     }
 
+
+    /**
+     * Remove all substances of the HashMap
+     *
+     * @param substances - Substances to be removed
+     */
     public void excludeSubstances(List<String> substances){
         if(!substances.isEmpty()){
             String nameOfList = substances.remove(0);
