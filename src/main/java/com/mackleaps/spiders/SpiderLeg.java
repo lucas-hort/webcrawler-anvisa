@@ -9,13 +9,12 @@ import org.jsoup.select.Elements;
 
 import java.net.InetSocketAddress;
 import java.net.Proxy;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
+import java.util.*;
 
 
 public class SpiderLeg {
+
+    private HashMap<String, List<String>> hashLists = new HashMap<String, List<String>>();
 
     // We'll use a fake USER_AGENT so the web server thinks the robot is a normal web browser.
     private static final String USER_AGENT
@@ -90,9 +89,17 @@ public class SpiderLeg {
                     action = p.select("strong").first().text().toLowerCase();
                     System.out.println("Ação da Anvisa: " + action);
                 }else{
-                    //Add substances on the list
-                    if (action.trim().equals("inclusão")){
-                        includeSubstances(extractSubstances(p));
+                    try{
+                        //Add substances on the list
+                        if (action.trim().equals("inclusão")){
+                            includeSubstances(extractSubstances(p));
+                        }
+                        //Remove substances of the list
+                        if (action.trim().equals("exclusão")){
+                            excludeSubstances(extractSubstances(p));
+                        }
+                    }catch (Exception e){
+                        e.printStackTrace();
                     }
                 }
 
@@ -102,6 +109,14 @@ public class SpiderLeg {
             System.out.println(" === ");
             System.out.println("");
         }
+
+        //Loop hashmap
+        Set<String> chaves = hashLists.keySet();
+        for (String chave : chaves){
+            System.out.println("========= hashmap =======");
+            System.out.println(chave + hashLists.get(chave));
+        }
+
 
         return true;
     }
@@ -151,12 +166,31 @@ public class SpiderLeg {
             String nameOfList = substances.remove(0);
             System.out.println("\nADICIONANDO NA LISTA "+nameOfList+" ...");
 
-            for (String subtance : substances){
-                System.out.println(subtance);
+            System.out.println(substances);
+
+            if (hashLists.containsKey(nameOfList)) {
+                hashLists.get(nameOfList).addAll(substances);
+            }else{
+                hashLists.put(nameOfList,substances);
             }
             System.out.println("");
         }
     }
+
+    public void excludeSubstances(List<String> substances){
+        if(!substances.isEmpty()){
+            String nameOfList = substances.remove(0);
+            System.out.printf("\nREMOVENDO DA LISTA "+nameOfList+" ...");
+
+            for (String substance : substances){
+                System.out.println(substance);
+            }
+            System.out.println("");
+        }
+    }
+
+
+
 
     /**
      * Performs a search on the body of on the HTML document that is retrieved.
