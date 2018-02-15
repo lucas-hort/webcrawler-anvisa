@@ -185,6 +185,11 @@ public class SpiderLeg {
             for (String substance : substances){
                 System.out.println(substance);
             }
+
+            if (hashLists.containsKey(nameOfList)) {
+                hashLists.get(nameOfList).removeAll(substances);
+            }
+
             System.out.println("");
         }
     }
