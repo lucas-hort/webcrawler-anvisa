@@ -81,12 +81,13 @@ public class SpiderLeg {
             int numerosDeP = allParagraphs.size();
 
 
+            String action = "";
+
             System.out.println("== == TD "+(i-3)/3+" == ==");
             for(Element p : allParagraphs){
-                //System.out.println(p);
-                String action = td.select("strong").first().text().toLowerCase();
 
                 if(isAction(p)){
+                    action = p.select("strong").first().text().toLowerCase();
                     System.out.println("Ação da Anvisa: " + action);
                 }else{
                     //Add substances on the list
