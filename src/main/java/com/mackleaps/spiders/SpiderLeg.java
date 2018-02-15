@@ -103,9 +103,7 @@ public class SpiderLeg {
             System.out.println("");
         }
 
-
         return true;
-
     }
 
 
@@ -124,6 +122,8 @@ public class SpiderLeg {
         String []firstSplit = null;
         String []secondSplit = null;
 
+        String nameOfList = "";
+
         List<String> substances = new ArrayList<String>();
 
         splitParagraph = p.text().split(" ");
@@ -135,7 +135,8 @@ public class SpiderLeg {
 
             if (firstSplit[0].equals("Lista")){
                 System.out.println("Ação na lista " + firstSplit[1]);
-                substances.add(firstSplit[1].replace("\"", "").trim());
+                nameOfList = firstSplit[1].substring(1,3);
+                substances.add(nameOfList);
                 for (int i = 0; i < secondSplit.length; i++ ){
                     System.out.println(secondSplit[i]);
                     substances.add(secondSplit[i]);
@@ -153,6 +154,7 @@ public class SpiderLeg {
             for (String subtance : substances){
                 System.out.println(subtance);
             }
+            System.out.println("");
         }
     }
 
