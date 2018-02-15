@@ -1,6 +1,6 @@
 package com.mackleaps.spiders;
 
-import com.sun.org.apache.xpath.internal.SourceTree;
+
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -9,6 +9,7 @@ import org.jsoup.select.Elements;
 
 import java.net.InetSocketAddress;
 import java.net.Proxy;
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -74,27 +75,27 @@ public class SpiderLeg {
         for (int i = 6; i < tdsOnPage.size(); i = i + 3){
 
             Element td = tdsOnPage.get(i);
-
-
             System.out.println("TD inteiro: " + td);
-
 
             Elements allParagraphs = td.select("p");
             int numerosDeP = allParagraphs.size();
 
 
-            System.out.println("== == TESTE == ==");
+            System.out.println("== == TD "+(i-3)/3+" == ==");
             for(Element p : allParagraphs){
                 //System.out.println(p);
+                String action = td.select("strong").first().text().toLowerCase();
 
                 if(isAction(p)){
-                    System.out.println("Ação da Anvisa: " + td.select("strong").first().text());
+                    System.out.println("Ação da Anvisa: " + action);
                 }else{
-                    extractSubstances(p);
+                    //Add substances on the list
+                    if (action.trim().equals("inclusão")){
+                        includeSubstances(extractSubstances(p));
+                    }
                 }
 
             }
-
 
             System.out.println("");
             System.out.println(" === ");
@@ -104,6 +105,54 @@ public class SpiderLeg {
 
         return true;
 
+    }
+
+
+    public List<String> getSubstances() {
+        return this.substances;
+    }
+
+
+    public boolean isAction(Element e){
+        return e.select("strong").hasText();
+    }
+
+
+    public List<String> extractSubstances(Element p){
+        String []splitParagraph = null;
+        String []firstSplit = null;
+        String []secondSplit = null;
+
+        List<String> substances = new ArrayList<String>();
+
+        splitParagraph = p.text().split(" ");
+        if(splitParagraph[0].equals("Lista")){
+            splitParagraph = p.text().split(":");
+
+            firstSplit = splitParagraph[0].split(" "); //Name of list that substances will be added
+            secondSplit = splitParagraph[1].split(";");//The substances extracted
+
+            if (firstSplit[0].equals("Lista")){
+                System.out.println("Ação na lista " + firstSplit[1]);
+                substances.add(firstSplit[1].replace("\"", "").trim());
+                for (int i = 0; i < secondSplit.length; i++ ){
+                    System.out.println(secondSplit[i]);
+                    substances.add(secondSplit[i]);
+                }
+            }
+        }
+        return substances;
+    }
+
+    public void includeSubstances(List<String> substances){
+        if(!substances.isEmpty()){
+            String nameOfList = substances.remove(0);
+            System.out.println("\nADICIONANDO NA LISTA "+nameOfList+" ...");
+
+            for (String subtance : substances){
+                System.out.println(subtance);
+            }
+        }
     }
 
     /**
@@ -125,34 +174,6 @@ public class SpiderLeg {
     }
 
 
-    public List<String> getSubstances() {
-        return this.substances;
-    }
 
-
-    public boolean isAction(Element e){
-        return e.select("strong").hasText();
-    }
-
-
-    public void extractSubstances(Element p){
-        String []splitParagraph = null;
-        String []firstSplit = null;
-        String []secondSplit = null;
-
-        splitParagraph = p.text().split(" ");
-        if(splitParagraph[0].equals("Lista")){
-            splitParagraph = p.text().split(":");
-
-            firstSplit = splitParagraph[0].split(" "); //List the substances will be added
-            secondSplit = splitParagraph[1].split(";");//The substances
-
-            if (firstSplit[0].equals("Lista")){
-                System.out.println("Ação na lista " + firstSplit[1]);
-                for (int i = 0; i < secondSplit.length; i++ )
-                    System.out.println(secondSplit[i]);
-            }
-        }
-    }
 
 }
