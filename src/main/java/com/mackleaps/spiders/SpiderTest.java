@@ -14,13 +14,7 @@ public class SpiderTest {
      */
     public static void main(String[] args) {
         Spider spider = new Spider();
-        spider.search("http://portal.anvisa.gov.br/lista-de-substancias-sujeitas-a-controle-especial",
-                        "MDMA");
+        spider.search("http://portal.anvisa.gov.br/lista-de-substancias-sujeitas-a-controle-especial");
     }
 }
 
-/*
-*
-*
-*
-* */

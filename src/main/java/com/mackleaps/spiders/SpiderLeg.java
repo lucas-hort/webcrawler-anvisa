@@ -71,14 +71,12 @@ public class SpiderLeg {
 
 
         //Loop all tds we want
-        for (int i = 6; i < tdsOnPage.size(); i = i + 3){
+        for (int i = tdsOnPage.size()-1; i >= 6; i = i - 3){
 
             Element td = tdsOnPage.get(i);
             System.out.println("TD inteiro: " + td);
 
             Elements allParagraphs = td.select("p");
-            int numerosDeP = allParagraphs.size();
-
 
             String action = "";
 
