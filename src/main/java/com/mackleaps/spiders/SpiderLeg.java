@@ -66,12 +66,16 @@ public class SpiderLeg {
         }
 
 
-        //Extract the TD tags in the table of substances
+        //Extract the <td> tags in the table of substances
         Elements tdsOnPage = htmlDocument.select("td");
 
 
-        //Loop all tds we want
-        for (int i = tdsOnPage.size()-1; i >= 6; i = i - 3){
+        /* The <td> we want to extract starts with index 6
+         * and iterate through the table by 3 for the
+         * reason of having 3 columns
+         */
+        final int firstSubstanceTD = 6;
+        for (int i = tdsOnPage.size()-1; i >= firstSubstanceTD; i -= 3){
 
             Element td = tdsOnPage.get(i);
             System.out.println("TD inteiro: " + td);
@@ -80,7 +84,7 @@ public class SpiderLeg {
 
             String action = "";
 
-            System.out.println("== == TD "+(i-3)/3+" == =="); //Show TD index
+            System.out.println("== == TD "+(i-3)/3+" == =="); //Show <td> index
             for(Element p : allParagraphs){
 
                 if(isAction(p)){
@@ -90,11 +94,15 @@ public class SpiderLeg {
                     try{
                         //Add substances on the list
                         if (action.trim().equals("inclusão")){
-                            includeSubstances(extractSubstances(p));
+                            includeSubstances(extractSubstances(p,action));
                         }
                         //Remove substances of the list
                         if (action.trim().equals("exclusão")){
-                            excludeSubstances(extractSubstances(p));
+                            excludeSubstances(extractSubstances(p,action));
+                        }
+                        //Swap substances of the lists
+                        if (action.trim().equals("transferência")){
+                            transferSubstances(extractSubstances(p,action));
                         }
                     }catch (Exception e){
                         e.printStackTrace();
@@ -120,11 +128,6 @@ public class SpiderLeg {
     }
 
 
-    public List<String> getSubstances() {
-        return this.substances;
-    }
-
-
     public boolean isAction(Element e){
         return e.select("strong").hasText();
     }
@@ -135,10 +138,11 @@ public class SpiderLeg {
      * This only works if it starts with "Lista", "Adendo" is not included.
      *
      * @param p - the paragraph to be splitted
+     * @param action - action to be executed
      * @return the name of the list and all substances
      */
 
-    public List<String> extractSubstances(Element p){
+    public List<String> extractSubstances(Element p, String action){
         String []splitParagraph = null;
         String []firstSplit = null;
         String []secondSplit = null;
@@ -156,11 +160,23 @@ public class SpiderLeg {
 
             if (firstSplit[0].equals("Lista")){
                 System.out.println("Ação na lista " + firstSplit[1]);
-                nameOfList = firstSplit[1].substring(1,3);
+
+                if (firstSplit[1].length() == 2){
+                    nameOfList = firstSplit[1].trim();
+                }else{
+                    nameOfList = firstSplit[1].substring(1,3);
+                }
                 substances.add(nameOfList);
+
+                //The list that will receive new substance
+                if(action.trim().equals("transferência")){
+                    nameOfList = firstSplit[5].substring(1,3);
+                    substances.add(nameOfList);
+                }
+
                 for (int i = 0; i < secondSplit.length; i++ ){
                     System.out.println(secondSplit[i]);
-                    substances.add(secondSplit[i]);
+                    substances.add(secondSplit[i].replace(".", "").trim());
                 }
             }
         }
@@ -180,7 +196,11 @@ public class SpiderLeg {
             System.out.println(substances);
 
             if (hashLists.containsKey(nameOfList)) {
-                hashLists.get(nameOfList).addAll(substances);
+                for (String substance : substances){
+                    //Avoid repetition
+                    if (!hashLists.get(nameOfList).contains(substance))
+                        hashLists.get(nameOfList).add(substance);
+                }
             }else{
                 hashLists.put(nameOfList,substances);
             }
@@ -211,28 +231,11 @@ public class SpiderLeg {
         }
     }
 
-
-
-
-    /**
-     * Performs a search on the body of on the HTML document that is retrieved.
-     * This method should only be called after a successful crawl.
-     *
-     * @param searchWord - The word or string to look for
-     * @return whether or not the word was found
-     */
-    public boolean searchForWord(String searchWord) {
-        // Defensive coding. This method should only be used after a successful crawl.
-        if (this.htmlDocument == null) {
-            System.out.println("ERROR! Call crawl() before performing analysis on the document");
-            return false;
+    private void transferSubstances(List<String> substances) {
+        if(!substances.isEmpty()){
+            System.out.println(" ==== HORT === ");
+            System.out.println(substances);
         }
-        System.out.println("Searching for the word " + searchWord + "...");
-        String bodyText = this.htmlDocument.body().text();
-        return bodyText.toLowerCase().contains(searchWord.toLowerCase());
     }
-
-
-
 
 }
