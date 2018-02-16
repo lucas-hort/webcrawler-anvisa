@@ -80,7 +80,7 @@ public class SpiderLeg {
 
             String action = "";
 
-            System.out.println("== == TD "+(i-3)/3+" == ==");
+            System.out.println("== == TD "+(i-3)/3+" == =="); //Show TD index
             for(Element p : allParagraphs){
 
                 if(isAction(p)){

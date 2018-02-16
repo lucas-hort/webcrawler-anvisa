@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1dc5a87-0299-4a3f-a4e7-ea0e72919831" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/Spider.java" afterPath="$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/Spider.java" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/SpiderLeg.java" afterPath="$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/SpiderLeg.java" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/SpiderTest.java" afterPath="$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/SpiderTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,17 +28,17 @@
       <file leaf-file-name="SpiderLeg.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/SpiderLeg.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="157">
-              <caret line="78" column="52" lean-forward="false" selection-start-line="78" selection-start-column="52" selection-end-line="78" selection-end-column="52" />
+            <state relative-caret-position="229">
+              <caret line="82" column="77" lean-forward="true" selection-start-line="82" selection-start-column="77" selection-end-line="82" selection-end-column="77" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#357#379#0" expanded="true" />
                 <element signature="e#698#706#0" expanded="true" />
-                <element signature="e#3902#3903#0" expanded="true" />
-                <element signature="e#3940#3941#0" expanded="true" />
-                <element signature="e#3982#3983#0" expanded="true" />
-                <element signature="e#4033#4034#0" expanded="true" />
-                <element signature="e#4569#4577#0" expanded="true" />
+                <element signature="e#3918#3919#0" expanded="true" />
+                <element signature="e#3956#3957#0" expanded="true" />
+                <element signature="e#3998#3999#0" expanded="true" />
+                <element signature="e#4049#4050#0" expanded="true" />
+                <element signature="e#4585#4593#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -313,12 +310,12 @@
       <workItem from="1518099321919" duration="9226000" />
       <workItem from="1518191406541" duration="7176000" />
       <workItem from="1518711569501" duration="12895000" />
-      <workItem from="1518799937128" duration="2046000" />
+      <workItem from="1518799937128" duration="2093000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="31343000" />
+    <option name="totallyTimeSpent" value="31390000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1600" y="-2" width="1600" height="902" extended-state="6" />
@@ -382,11 +379,11 @@
             <element signature="imports" expanded="true" />
             <element signature="e#357#379#0" expanded="true" />
             <element signature="e#698#706#0" expanded="true" />
-            <element signature="e#3902#3903#0" expanded="true" />
-            <element signature="e#3940#3941#0" expanded="true" />
-            <element signature="e#3982#3983#0" expanded="true" />
-            <element signature="e#4033#4034#0" expanded="true" />
-            <element signature="e#4569#4577#0" expanded="true" />
+            <element signature="e#3918#3919#0" expanded="true" />
+            <element signature="e#3956#3957#0" expanded="true" />
+            <element signature="e#3998#3999#0" expanded="true" />
+            <element signature="e#4049#4050#0" expanded="true" />
+            <element signature="e#4585#4593#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -423,11 +420,11 @@
             <element signature="imports" expanded="true" />
             <element signature="e#357#379#0" expanded="true" />
             <element signature="e#698#706#0" expanded="true" />
-            <element signature="e#3902#3903#0" expanded="true" />
-            <element signature="e#3940#3941#0" expanded="true" />
-            <element signature="e#3982#3983#0" expanded="true" />
-            <element signature="e#4033#4034#0" expanded="true" />
-            <element signature="e#4569#4577#0" expanded="true" />
+            <element signature="e#3918#3919#0" expanded="true" />
+            <element signature="e#3956#3957#0" expanded="true" />
+            <element signature="e#3998#3999#0" expanded="true" />
+            <element signature="e#4049#4050#0" expanded="true" />
+            <element signature="e#4585#4593#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -531,17 +528,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/mackleaps/spiders/SpiderLeg.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="157">
-          <caret line="78" column="52" lean-forward="false" selection-start-line="78" selection-start-column="52" selection-end-line="78" selection-end-column="52" />
+        <state relative-caret-position="229">
+          <caret line="82" column="77" lean-forward="true" selection-start-line="82" selection-start-column="77" selection-end-line="82" selection-end-column="77" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#357#379#0" expanded="true" />
             <element signature="e#698#706#0" expanded="true" />
-            <element signature="e#3902#3903#0" expanded="true" />
-            <element signature="e#3940#3941#0" expanded="true" />
-            <element signature="e#3982#3983#0" expanded="true" />
-            <element signature="e#4033#4034#0" expanded="true" />
-            <element signature="e#4569#4577#0" expanded="true" />
+            <element signature="e#3918#3919#0" expanded="true" />
+            <element signature="e#3956#3957#0" expanded="true" />
+            <element signature="e#3998#3999#0" expanded="true" />
+            <element signature="e#4049#4050#0" expanded="true" />
+            <element signature="e#4585#4593#0" expanded="true" />
           </folding>
         </state>
       </provider>
