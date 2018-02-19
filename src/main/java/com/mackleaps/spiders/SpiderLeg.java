@@ -156,7 +156,14 @@ public class SpiderLeg {
             splitParagraph = p.text().split(":");
 
             firstSplit = splitParagraph[0].split(" "); //Name of list that substances will be added
-            secondSplit = splitParagraph[1].split(";");//The substances extracted
+
+            if (splitParagraph[1].contains(";")){
+                secondSplit = splitParagraph[1].split(";");//The substances extracted
+            }else{
+                secondSplit = splitParagraph[1].split(" ");
+            }
+
+
 
             if (firstSplit[0].equals("Lista")){
                 System.out.println(action+" na lista " + firstSplit[1]);
@@ -174,9 +181,18 @@ public class SpiderLeg {
                     substances.add(nameOfList);
                 }
 
+                //Split by 'e'
+
+
                 for (int i = 0; i < secondSplit.length; i++ ){
-                    System.out.println(secondSplit[i]);
-                    substances.add(secondSplit[i].replace(".", "").trim());
+                    String filterSubstance = secondSplit[i]
+                                            .replace(".", "")
+                                            .replace(",","")
+                                            .trim();
+                    if (!filterSubstance.equals("e") && filterSubstance.length() != 0){
+                        substances.add(filterSubstance);
+                        System.out.println(filterSubstance);
+                    }
                 }
             }
         }
@@ -234,8 +250,6 @@ public class SpiderLeg {
         String []splitSubstance = null;
 
         if(!substances.isEmpty()){
-            System.out.println(" ==== HORT === ");
-
             //Split substances that are linked with "e"    eg. 'Fluor e Testosterone'
             for (int i = 2; i < substances.size() ; i++){
                 splitSubstance = substances.get(i).split(" ");
@@ -267,8 +281,6 @@ public class SpiderLeg {
                     hashLists.put(newList, tempList);
                 }
             }
-
-            System.out.println(substances);
         }
     }
 
