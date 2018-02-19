@@ -1,7 +1,6 @@
 package com.mackleaps.spiders;
 
 
-import com.sun.org.apache.xpath.internal.SourceTree;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -78,6 +77,10 @@ public class SpiderLeg {
         final int firstSubstanceTD = 6;
         for (int i = tdsOnPage.size()-1; i >= firstSubstanceTD; i -= 3){
 
+
+            printHashMap();
+
+
             Element td = tdsOnPage.get(i);
             System.out.println("TD inteiro: " + td);
 
@@ -111,6 +114,8 @@ public class SpiderLeg {
                 }
 
             }
+
+            printHashMap();
 
             System.out.println("");
             System.out.println(" === ");
@@ -267,6 +272,15 @@ public class SpiderLeg {
         }
     }
 
-    
+    public void printHashMap(){
+        //Loop hashmap
+        Set<String> chaves = hashLists.keySet();
+        System.out.println("\n========= hashmap =======");
+        for (String chave : chaves){
+            System.out.println(chave + hashLists.get(chave));
+        }
+        System.out.println("");
+
+    }
 
 }
