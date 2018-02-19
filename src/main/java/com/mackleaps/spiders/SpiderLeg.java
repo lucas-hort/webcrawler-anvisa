@@ -117,12 +117,6 @@ public class SpiderLeg {
             System.out.println("");
         }
 
-        //Loop hashmap
-        Set<String> chaves = hashLists.keySet();
-        for (String chave : chaves){
-            System.out.println("========= hashmap =======");
-            System.out.println(chave + hashLists.get(chave));
-        }
 
 
         return true;
@@ -160,7 +154,7 @@ public class SpiderLeg {
             secondSplit = splitParagraph[1].split(";");//The substances extracted
 
             if (firstSplit[0].equals("Lista")){
-                System.out.println("Ação na lista " + firstSplit[1]);
+                System.out.println(action+" na lista " + firstSplit[1]);
 
                 if (firstSplit[1].length() == 2){
                     nameOfList = firstSplit[1].trim();
@@ -192,9 +186,6 @@ public class SpiderLeg {
     public void includeSubstances(List<String> substances){
         if(!substances.isEmpty()){
             String nameOfList = substances.remove(0);
-            System.out.println("\nADICIONANDO NA LISTA "+nameOfList+" ...");
-
-            System.out.println(substances);
 
             if (hashLists.containsKey(nameOfList)) {
                 for (String substance : substances){
@@ -218,11 +209,6 @@ public class SpiderLeg {
     public void excludeSubstances(List<String> substances){
         if(!substances.isEmpty()){
             String nameOfList = substances.remove(0);
-            System.out.printf("\nREMOVENDO DA LISTA "+nameOfList+" ...");
-
-            for (String substance : substances){
-                System.out.println(substance);
-            }
 
             if (hashLists.containsKey(nameOfList)) {
                 hashLists.get(nameOfList).removeAll(substances);
@@ -260,13 +246,27 @@ public class SpiderLeg {
             for (int k = 2; k < substances.size() ; k++){
                 String oldList = substances.get(0);
                 String newList = substances.get(1);
-                if (hashLists.containsKey())
-                hashLists.get(substances.get(0)).remove(substances.get(k)); //Remove from the list
-                hashLists.get(substances.get(1)).add(substances.get(k));    //Add in another list
+                String substance = substances.get(k);
+
+                //Remove from the list
+                if (hashLists.containsKey(oldList)){
+                    hashLists.get(oldList).remove(substance);
+                }
+
+                //Add in another list
+                if (hashLists.containsKey(newList)){
+                    hashLists.get(newList).add(substance);
+                }else{
+                    List<String> tempList = new ArrayList<String>();
+                    tempList.add(substance);
+                    hashLists.put(newList, tempList);
+                }
             }
 
             System.out.println(substances);
         }
     }
+
+    
 
 }
