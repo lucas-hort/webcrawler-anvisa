@@ -157,14 +157,8 @@ public class SpiderLeg {
 
             firstSplit = splitParagraph[0].split(" "); //Name of list that substances will be added
 
-//            if (splitParagraph[1].contains(";")){
-//                secondSplit = splitParagraph[1].split(";");//The substances extracted
-//            }else{
-//                secondSplit = splitParagraph[1].split(" ");
-//            }
             String regex = ",|;|(\\se\\s)";
             secondSplit = splitParagraph[1].split(regex);
-
 
 
             if (firstSplit[0].equals("Lista")){
@@ -184,8 +178,6 @@ public class SpiderLeg {
                 }
 
                 //Split by 'e'
-
-
                 for (int i = 0; i < secondSplit.length; i++ ){
                     String filterSubstance = secondSplit[i]
                                             .replace(".", "")
