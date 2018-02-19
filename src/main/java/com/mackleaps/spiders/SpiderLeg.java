@@ -157,11 +157,13 @@ public class SpiderLeg {
 
             firstSplit = splitParagraph[0].split(" "); //Name of list that substances will be added
 
-            if (splitParagraph[1].contains(";")){
-                secondSplit = splitParagraph[1].split(";");//The substances extracted
-            }else{
-                secondSplit = splitParagraph[1].split(" ");
-            }
+//            if (splitParagraph[1].contains(";")){
+//                secondSplit = splitParagraph[1].split(";");//The substances extracted
+//            }else{
+//                secondSplit = splitParagraph[1].split(" ");
+//            }
+            String regex = ",|;|(\\se\\s)";
+            secondSplit = splitParagraph[1].split(regex);
 
 
 
@@ -189,7 +191,9 @@ public class SpiderLeg {
                                             .replace(".", "")
                                             .replace(",","")
                                             .trim();
-                    if (!filterSubstance.equals("e") && filterSubstance.length() != 0){
+                    if (!filterSubstance.equals("e")
+                            && filterSubstance.length() != 0
+                            && !filterSubstance.contains("adendo")){
                         substances.add(filterSubstance);
                         System.out.println(filterSubstance);
                     }
