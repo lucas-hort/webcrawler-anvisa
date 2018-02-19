@@ -1,6 +1,7 @@
 package com.mackleaps.spiders;
 
 
+import com.sun.org.apache.xpath.internal.SourceTree;
 import org.jsoup.Connection;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -84,7 +85,7 @@ public class SpiderLeg {
 
             String action = "";
 
-            System.out.println("== == TD "+(i-3)/3+" == =="); //Show <td> index
+            System.out.println("== == TD "+((tdsOnPage.size()-i)/3+1)+" == =="); //Show <td> index
             for(Element p : allParagraphs){
 
                 if(isAction(p)){
@@ -231,9 +232,39 @@ public class SpiderLeg {
         }
     }
 
+
+    /**
+     * Swap substances of the list on HashMap
+     *
+     * @param substances - Substances to be swapped
+     */
     private void transferSubstances(List<String> substances) {
+
+        String []splitSubstance = null;
+
         if(!substances.isEmpty()){
             System.out.println(" ==== HORT === ");
+
+            //Split substances that are linked with "e"    eg. 'Fluor e Testosterone'
+            for (int i = 2; i < substances.size() ; i++){
+                splitSubstance = substances.get(i).split(" ");
+                substances.remove(substances.get(i));
+            }
+            for (int j = 0; j < splitSubstance.length ; j++){
+                if (!splitSubstance[j].equals("e")){
+                    substances.add(splitSubstance[j]);
+                }
+            }
+
+            //Swap lists on the HashMap
+            for (int k = 2; k < substances.size() ; k++){
+                String oldList = substances.get(0);
+                String newList = substances.get(1);
+                if (hashLists.containsKey())
+                hashLists.get(substances.get(0)).remove(substances.get(k)); //Remove from the list
+                hashLists.get(substances.get(1)).add(substances.get(k));    //Add in another list
+            }
+
             System.out.println(substances);
         }
     }
