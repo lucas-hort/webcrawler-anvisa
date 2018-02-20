@@ -35,13 +35,13 @@ public class SpiderLeg {
         Connection connection = null;
         Document htmlDocument = null;
 
-        Proxy proxy = new Proxy(
-                Proxy.Type.HTTP,
-                InetSocketAddress.createUnresolved("172.16.0.10", 3128)
-        );
+//        Proxy proxy = new Proxy(
+//                Proxy.Type.HTTP,
+//                InetSocketAddress.createUnresolved("172.16.0.10", 3128)
+//        );
 
         try {
-            connection = Jsoup.connect(url).userAgent(USER_AGENT).proxy(proxy);
+            connection = Jsoup.connect(url).userAgent(USER_AGENT);
         } catch (Exception ex) {
             System.out.println(ex.getMessage());
             return false;
@@ -158,6 +158,7 @@ public class SpiderLeg {
             firstSplit = splitParagraph[0].split(" "); //Name of list that substances will be added
 
             String regex = ",|;|(\\se\\s)";
+
             secondSplit = splitParagraph[1].split(regex);
 
 
@@ -182,7 +183,8 @@ public class SpiderLeg {
                     String filterSubstance = secondSplit[i]
                                             .replace(".", "")
                                             .replace(",","")
-                                            .trim();
+                                            .trim()
+                                            .toLowerCase();
                     if (!filterSubstance.equals("e")
                             && filterSubstance.length() != 0
                             && !filterSubstance.contains("adendo")){
