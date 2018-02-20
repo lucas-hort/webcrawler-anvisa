@@ -104,10 +104,16 @@ public class SpiderLeg {
                         if (action.trim().equals("exclusão")){
                             excludeSubstances(extractSubstances(p,action));
                         }
-                        //Swap substances of the lists
+                        //Transfer substance from one list to another
                         if (action.trim().equals("transferência")){
                             transferSubstances(extractSubstances(p,action));
                         }
+                        //Swap substances of a list
+                        if (action.trim().equals("substituição")){
+                            swapSubstances(extractSubstances(p,action));
+                        }
+
+
                     }catch (Exception e){
                         e.printStackTrace();
                     }
@@ -170,9 +176,11 @@ public class SpiderLeg {
                 }else{
                     nameOfList = firstSplit[1].substring(1,3);
                 }
+
+                //Default list
                 substances.add(nameOfList);
 
-                //The list that will receive new substance
+                //The list that will receive new substance (Only transferSubstances)
                 if(action.trim().equals("transferência")){
                     nameOfList = firstSplit[5].substring(1,3);
                     substances.add(nameOfList);
@@ -195,6 +203,23 @@ public class SpiderLeg {
             }
         }
         return substances;
+    }
+
+    public void swapSubstances(List<String> substances){
+        if (!substances.isEmpty()){
+            String nameOfList = substances.remove(0);
+
+            String []swapped = null;
+
+
+            System.out.println("HORTGOD1 SWAP");
+
+            for (String substance : substances){
+                swapped = substance.split("por");
+            }
+            for (int i = 0 ; i < swapped.length ; i++)
+                System.out.println(swapped[i].trim());
+        }
     }
 
     /**
@@ -239,9 +264,9 @@ public class SpiderLeg {
 
 
     /**
-     * Swap substances of the list on HashMap
+     * Transfer a substance from a list to another on HashMap
      *
-     * @param substances - Substances to be swapped
+     * @param substances - Substances to be transferred
      */
     private void transferSubstances(List<String> substances) {
 
