@@ -169,6 +169,7 @@ public class SpiderLeg {
 
 
             if (firstSplit[0].equals("Lista")){
+                System.out.println("\n=== EXTRACT SUBSTANCES ===");
                 System.out.println(action+" na lista " + firstSplit[1]);
 
                 if (firstSplit[1].length() == 2){
@@ -201,24 +202,43 @@ public class SpiderLeg {
                     }
                 }
             }
+            System.out.println("=== EXTRACT SUBSTANCES ===\n");
         }
         return substances;
     }
 
+
+    /**
+     * Swap substances of a list
+     *
+     * @param substances - Substances to be swapped
+     */
     public void swapSubstances(List<String> substances){
         if (!substances.isEmpty()){
             String nameOfList = substances.remove(0);
 
-            String []swapped = null;
-
+            List<String> swapped = new ArrayList<String>();
+            String []arraySwap = null;
 
             System.out.println("HORTGOD1 SWAP");
 
             for (String substance : substances){
-                swapped = substance.split("por");
+                arraySwap = substance.split("por");
+                swapped.add(arraySwap[0]);
+                swapped.add(arraySwap[1]);
             }
-            for (int i = 0 ; i < swapped.length ; i++)
-                System.out.println(swapped[i].trim());
+            for (int i = 0 ; i < swapped.size() ; i += 2){
+                String substanceToBeSwapped = swapped.get(i+1).replace("substituir", "").trim();
+                String substanceToSwap = swapped.get(i).replace("substituir", "").trim();
+                System.out.println("substanceToBeSwapped : " + substanceToBeSwapped);
+                System.out.println("substanceToSwap : " + substanceToSwap);
+
+                if(hashLists.get(nameOfList).contains(substanceToBeSwapped)){
+                    hashLists.get(nameOfList).remove(substanceToBeSwapped);
+                    hashLists.get(nameOfList).add(substanceToSwap);
+                }else
+                    hashLists.get(nameOfList).add(substanceToSwap);
+            }
         }
     }
 
