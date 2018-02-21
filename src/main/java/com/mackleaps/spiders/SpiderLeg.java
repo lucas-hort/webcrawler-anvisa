@@ -220,8 +220,6 @@ public class SpiderLeg {
             List<String> swapped = new ArrayList<String>();
             String []arraySwap = null;
 
-            System.out.println("HORTGOD1 SWAP");
-
             for (String substance : substances){
                 arraySwap = substance.split("por");
                 swapped.add(arraySwap[0]);
@@ -231,7 +229,6 @@ public class SpiderLeg {
                 String substanceToBeSwapped = swapped.get(i+1).replace("substituir", "").trim();
                 String substanceToSwap = swapped.get(i).replace("substituir", "").trim();
                 System.out.println("substanceToBeSwapped : " + substanceToBeSwapped);
-                System.out.println("substanceToSwap : " + substanceToSwap);
 
                 if(hashLists.get(nameOfList).contains(substanceToBeSwapped)){
                     hashLists.get(nameOfList).remove(substanceToBeSwapped);
